@@ -35,31 +35,31 @@
             overflow-x: hidden;
         }
 
+        body.menu-open {
+            overflow: hidden;
+        }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 0 1.5rem;
+            padding: 0 1.25rem;
         }
 
-        /* Enhanced Navigation */
+        /* Fixed Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border-color);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             z-index: 1000;
             transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            background: rgba(10, 10, 10, 0.95);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
 
         .nav-inner {
@@ -68,24 +68,25 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 1.5rem;
+            padding: 0 1.25rem;
         }
 
         .logo {
             font-family: var(--font-heading);
             font-weight: 800;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             background: linear-gradient(135deg, var(--accent), #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-decoration: none;
             letter-spacing: -1px;
+            z-index: 1001;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem;
             list-style: none;
         }
 
@@ -93,46 +94,42 @@
             text-decoration: none;
             color: var(--text-dim);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(135deg, var(--accent), #6366f1);
-            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
             color: var(--accent);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
         }
 
-        /* Enhanced Hero Section */
+        /* Hero Section */
         .hero {
-            padding: 120px 0 80px;
+            padding: 120px 0 60px;
             display: grid;
-            grid-template-columns: 1fr 450px;
-            gap: 5rem;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
             align-items: center;
             min-height: 100vh;
         }
 
         .hero-text h1 {
             font-family: var(--font-heading);
-            font-size: clamp(4rem, 8vw, 6rem);
-            line-height: 0.9;
-            margin-bottom: 2rem;
-            letter-spacing: -3px;
+            font-size: clamp(2.5rem, 10vw, 5.5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
             background: linear-gradient(135deg, var(--accent), #6366f1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -140,157 +137,128 @@
         }
 
         .hero-subtitle {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 4vw, 1.25rem);
             color: var(--text-dim);
-            margin-bottom: 2.5rem;
-            max-width: 500px;
+            margin-bottom: 2rem;
+            max-width: 550px;
         }
 
         .hero-image {
             width: 100%;
-            aspect-ratio: 1/1.2;
+            aspect-ratio: 1/1.1;
             background: var(--card-bg);
             border-radius: var(--radius);
             overflow: hidden;
             border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-image:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: grayscale(0.5);
+            filter: grayscale(0.2);
             transition: 0.5s;
         }
 
-        .hero-image:hover img {
-            filter: grayscale(0);
-        }
-
-        /* Bento-style Info Cards */
+        /* Bento Cards */
         .info-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .info-box {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: var(--radius);
+            padding: 1.2rem;
+            border-radius: 12px;
             border: 1px solid var(--border-color);
-            transition: 0.3s;
-        }
-
-        .info-box:hover {
-            background: #1a1a1a;
-            border-color: var(--accent);
         }
 
         .info-box span {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             color: var(--accent);
             font-weight: 800;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
         }
 
-        /* Section Global */
-        section { padding: 6rem 0; }
+        .info-box p {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Sections */
+        section { padding: 4rem 0; }
 
         .section-header {
             font-family: var(--font-heading);
-            font-size: 3rem;
-            margin-bottom: 3rem;
+            font-size: clamp(2rem, 8vw, 3rem);
+            margin-bottom: 2rem;
             letter-spacing: -1px;
         }
 
-        /* Modern Card Styling */
         .glass-card {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: var(--radius);
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            transition: 0.4s;
         }
 
-        .glass-card:hover {
-            border-color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow);
-            transform: translateY(-5px);
-        }
-
-        /* Skills Layout Update */
+        /* Skills */
         .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 0.8rem;
         }
 
         .skill-tag {
             background: #111;
             border: 1px solid var(--border-color);
-            padding: 1rem;
-            border-radius: 12px;
+            padding: 0.8rem;
+            border-radius: 10px;
             text-align: center;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
 
-        .skill-tag:hover {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
 
-        /* Project Layout Update */
         .project-card {
             background: var(--card-bg);
             border-radius: var(--radius);
             border: 1px solid var(--border-color);
             overflow: hidden;
-            transition: 0.4s;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
+            display: flex;
+            flex-direction: column;
         }
 
         .project-thumb {
             width: 100%;
-            height: 240px;
+            height: 200px;
             background: #222;
-            overflow: hidden;
         }
 
         .project-thumb img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: 0.6s ease;
-        }
-
-        .project-card:hover .project-thumb img {
-            transform: scale(1.1);
         }
 
         .project-content {
             padding: 1.5rem;
+            flex-grow: 1;
         }
 
-        /* Project Button Styling */
         .project-btn {
             display: inline-flex;
             align-items: center;
@@ -298,48 +266,29 @@
             background: var(--accent);
             color: white;
             text-decoration: none;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            border: 2px solid var(--accent);
+            font-size: 0.85rem;
+            margin-top: auto;
         }
 
-        .project-btn:hover {
-            background: transparent;
-            color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px var(--accent-glow);
-        }
-
-        .project-btn i {
-            font-size: 1rem;
-        }
-
-        /* Contact Form Layout */
+        /* Contact */
         .contact-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2.5rem;
         }
 
         .form-input {
             width: 100%;
             background: #000;
             border: 1px solid var(--border-color);
-            padding: 1.25rem;
+            padding: 1rem;
             color: white;
-            border-radius: 12px;
+            border-radius: 10px;
+            margin-bottom: 0.8rem;
             font-family: inherit;
-            margin-bottom: 1rem;
-            transition: 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--accent-glow);
         }
 
         .btn-send {
@@ -347,24 +296,18 @@
             background: var(--accent);
             color: white;
             border: none;
-            padding: 1.25rem;
-            border-radius: 12px;
+            padding: 1rem;
+            border-radius: 10px;
             font-family: var(--font-heading);
             font-weight: 700;
             cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .btn-send:hover {
-            background: var(--accent-light);
-            transform: scale(1.02);
         }
 
         /* Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: 0.8s ease-out;
+            transform: translateY(20px);
+            transition: 0.6s ease-out;
         }
 
         .reveal.active {
@@ -372,11 +315,75 @@
             transform: translateY(0);
         }
 
+        /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; padding-top: 60px; }
-            .hero-image { order: -1; max-width: 300px; margin: 0 auto; }
-            .info-grid { grid-template-columns: 1fr; }
-            .contact-layout { grid-template-columns: 1fr; }
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(5, 5, 5, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                font-family: var(--font-heading);
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 100px;
+                gap: 2rem;
+                text-align: center;
+            }
+
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-image {
+                order: -1;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .contact-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-header {
+                text-align: center;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -384,8 +391,13 @@
 
     <nav>
         <div class="nav-inner">
-            <a href="#home" class="logo">PORTFOLIO</a>
-            <ul class="nav-links">
+            <a href="#home" class="logo">Portfolio</a>
+            
+            <button class="menu-toggle" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="#about">Giới thiệu</a></li>
                 <li><a href="#skills">Kỹ năng</a></li>
                 <li><a href="#projects">Dự án</a></li>
@@ -398,27 +410,27 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-text">
-                <p style="color:var(--accent); font-weight: 800; margin-bottom: 1rem; letter-spacing: 2px;">STUDENT DEVELOPER</p>
+                <p style="color:var(--accent); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 2px; font-size: 0.8rem;">WEB DEVELOPER</p>
                 <h1>ĐINH<br>PHÚC THIÊN</h1>
-                <p class="hero-subtitle">Sinh viên Công nghệ thông tin đam mê xây dựng những trải nghiệm web độc đáo và tối ưu hiệu suất.</p>
+                <p class="hero-subtitle">Sinh viên Công nghệ thông tin chuyên tâm xây dựng các sản phẩm web hiện đại, mượt mà và tối ưu.</p>
                 
                 <div class="info-grid">
                     <div class="info-box">
-                        <span>Trường học</span>
-                        <p>Cao đẳng FPT Polytechnich</p>
+                        <span>Trường</span>
+                        <p>FPT Polytechnic</p>
                     </div>
                     <div class="info-box">
-                        <span>Niên khóa</span>
+                        <span>Khóa</span>
                         <p>2024 - 2026</p>
                     </div>
                     <div class="info-box">
-                        <span>Vị trí</span>
-                        <p>Lập trình viên website</p>
+                        <span>Chuyên ngành</span>
+                        <p>Lập trình Web</p>
                     </div>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="" alt="Ảnh chân dung">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000" alt="Đinh Phúc Thiên">
             </div>
         </section>
 
@@ -426,8 +438,8 @@
         <section id="about">
             <h2 class="section-header reveal">Giới thiệu</h2>
             <div class="glass-card reveal">
-                <p style="font-size: 1.25rem; color: var(--text-dim);">
-                    Với niềm đam mê mãnh liệt dành cho công nghệ mã nguồn mở, tôi hiện đang tập trung phát triển kỹ năng với hệ sinh thái <b>PHP & Javascript</b>. Tôi không chỉ học cách viết code sạch mà còn chú trọng vào tư duy giải quyết vấn đề và trải nghiệm người dùng thực tế thông qua các đồ án tại trường.
+                <p style="font-size: 1.1rem; color: var(--text-dim);">
+                    Tôi hiện đang là sinh viên tại <b>Cao đẳng FPT Polytechnic</b>. Với định hướng trở thành một Fullstack Developer, tôi không ngừng trau dồi kỹ năng về <b>PHP, Laravel và Javascript</b>. Quan điểm của tôi là code không chỉ để chạy, mà phải đẹp và dễ bảo trì.
                 </p>
             </div>
         </section>
@@ -436,44 +448,42 @@
         <section id="skills">
             <h2 class="section-header reveal">Kỹ năng</h2>
             <div class="skills-container reveal">
-                <div class="skill-tag">HTML / CSS / JS</div>
-                <div class="skill-tag">PHP & Laravel</div>
-                <div class="skill-tag">MySQL / PostgreSQL</div>
-                <div class="skill-tag">UI/UX Design</div>
-                <div class="skill-tag">Figma</div>
-                <div class="skill-tag">React basics</div>
-                <div class="skill-tag">Git / Github</div>
-                <div class="skill-tag">Linux Basics</div>
+                <div class="skill-tag">HTML5 / CSS3</div>
+                <div class="skill-tag">Javascript</div>
+                <div class="skill-tag">PHP</div>
+                <div class="skill-tag">MySQL</div>
+                <div class="skill-tag">Figma UI/UX</div>
+                <div class="skill-tag">Git / GitHub</div>
             </div>
         </section>
 
         <!-- Dự án -->
         <section id="projects">
             <h2 class="section-header reveal">Dự án</h2>
-            <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            <div class="project-grid">
+                <!-- Dự án 1 -->
                 <div class="project-card reveal">
                     <div class="project-thumb">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" alt="Project 1">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" alt="E-Commerce">
                     </div>
                     <div class="project-content">
-                        <h3 style="margin-bottom: 0.5rem;">E-Commerce PHP</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Hệ thống bán hàng tối ưu SEO và quản lý đơn hàng thông minh.</p>
+                        <h3 style="margin-bottom: 0.5rem;">Dự án</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Website bán hàng tích hợp quản lý kho và thanh toán trực tuyến.</p>
                         <a href="https://github.com/phucthien3156" class="project-btn" target="_blank">
-                            <i class="fas fa-external-link-alt"></i>
-                            Xem Demo
+                            <i class="fab fa-github"></i> Xem GitHub
                         </a>
                     </div>
                 </div>
+                <!-- Dự án 2 -->
                 <div class="project-card reveal">
                     <div class="project-thumb">
-                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800" alt="Project 2">
+                        <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800" alt="UI Design">
                     </div>
                     <div class="project-content">
-                        <h3 style="margin-bottom: 0.5rem;">Food App Design</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Mẫu thiết kế ứng dụng giao đồ ăn với trải nghiệm mượt mà trên Mobile.</p>
+                        <h3 style="margin-bottom: 0.5rem;">Dự án</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Giao diện ứng dụng đặt đồ ăn với trải nghiệm người dùng tối ưu.</p>
                         <a href="https://github.com/phucthien3156" class="project-btn" target="_blank">
-                            <i class="fab fa-github"></i>
-                            Xem trên GitHub
+                            <i class="fab fa-github"></i> Xem GitHub
                         </a>
                     </div>
                 </div>
@@ -485,29 +495,56 @@
             <div class="glass-card reveal">
                 <div class="contact-layout">
                     <div>
-                        <h2 class="section-header" style="margin-bottom: 1.5rem;">Liên hệ</h2>
-                        <p style="color: var(--text-dim); margin-bottom: 2rem;">Hãy gửi lời chào hoặc thắc mắc của bạn qua biểu mẫu này, tôi sẽ phản hồi sớm nhất có thể.</p>
-                        <div style="font-weight: 700;">
-                            <p style="margin-bottom: 0.5rem;">MAIL: phucthien3156@gmail.com</p>
-                            <p>PHONE: +84 947165235</p>
+                        <h2 class="section-header" style="margin-bottom: 1rem;">Kết nối</h2>
+                        <p style="color: var(--text-dim); margin-bottom: 2rem;">Tôi luôn sẵn lòng đón nhận những cơ hội mới và học hỏi từ những người đi trước.</p>
+                        <div style="font-weight: 700; font-size: 0.95rem;">
+                            <p style="margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color:var(--accent); width:25px;"></i> phucthien3156@gmail.com</p>
+                            <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone" style="color:var(--accent); width:25px;"></i> +84 947 165 235</p>
+                            <p><i class="fab fa-github" style="color:var(--accent); width:25px;"></i> github.com/phucthien3156</p>
                         </div>
                     </div>
-                    <form onsubmit="event.preventDefault(); alert('Tin nhắn đã được gửi đi!');">
+                    <form onsubmit="event.preventDefault(); alert('Cảm ơn! Tôi sẽ liên hệ lại sớm.');">
                         <input type="text" class="form-input" placeholder="Tên của bạn" required>
-                        <input type="email" class="form-input" placeholder="Email liên hệ" required>
-                        <textarea class="form-input" style="min-height: 120px;" placeholder="Nội dung trao đổi..."></textarea>
-                        <button type="submit" class="btn-send">GỬI THÔNG TIN</button>
+                        <input type="email" class="form-input" placeholder="Email của bạn" required>
+                        <textarea class="form-input" style="min-height: 100px;" placeholder="Lời nhắn..."></textarea>
+                        <button type="submit" class="btn-send">GỬI NGAY</button>
                     </form>
                 </div>
             </div>
         </section>
     </div>
 
-    <footer style="padding: 4rem 0; border-top: 1px solid var(--border-color); text-align: center;">
-        <p style="color: var(--text-dim); font-size: 0.8rem;">© 2024 ĐINH PHÚC THIÊN.</p>
+    <footer style="padding: 3rem 0; border-top: 1px solid var(--border-color); text-align: center;">
+        <p style="color: var(--text-dim); font-size: 0.75rem; letter-spacing: 1px;">© 2024 ĐINH PHÚC THIÊN. DESIGNED FOR MOBILE & DESKTOP.</p>
     </footer>
 
     <script>
+        // Hamburger Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            // Change icon
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Reveal elements on scroll
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
             reveals.forEach(el => {
@@ -519,32 +556,21 @@
             });
         }
 
-        // Navbar scroll effect
-        function handleNavbarScroll() {
-            const navbar = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        }
-
-        // Smooth scrolling for navigation links
+        // Smooth scroll adjustment for fixed header
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
                     });
                 }
             });
         });
 
         window.addEventListener("scroll", reveal);
-        window.addEventListener("scroll", handleNavbarScroll);
         window.addEventListener("load", reveal);
     </script>
 </body>
