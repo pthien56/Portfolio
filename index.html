@@ -35,6 +35,10 @@
             overflow-x: hidden;
         }
 
+        body.menu-open {
+            overflow: hidden;
+        }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -77,6 +81,7 @@
             background-clip: text;
             text-decoration: none;
             letter-spacing: -1px;
+            z-index: 1001;
         }
 
         .nav-links {
@@ -95,6 +100,18 @@
 
         .nav-links a:hover {
             color: var(--accent);
+        }
+
+        /* Hamburger Menu Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 5px;
         }
 
         /* Hero Section */
@@ -300,6 +317,35 @@
 
         /* MOBILE OPTIMIZATION */
         @media (max-width: 900px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background: rgba(5, 5, 5, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5rem;
+                transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.5rem;
+                font-family: var(--font-heading);
+            }
+
             .hero {
                 grid-template-columns: 1fr;
                 padding-top: 100px;
@@ -328,29 +374,9 @@
             .contact-layout {
                 grid-template-columns: 1fr;
             }
-
-            .nav-links {
-                gap: 0.8rem;
-            }
-
-            .nav-links a {
-                font-size: 0.75rem;
-            }
-            
-            .logo {
-                font-size: 1.1rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .nav-links {
-                display: none; /* Ẩn menu trên máy cực nhỏ để tránh tràn */
-            }
-            
-            .nav-inner {
-                justify-content: center;
-            }
-
             .section-header {
                 text-align: center;
             }
@@ -366,7 +392,12 @@
     <nav>
         <div class="nav-inner">
             <a href="#home" class="logo">Portfolio</a>
-            <ul class="nav-links">
+            
+            <button class="menu-toggle" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="nav-links" id="nav-menu">
                 <li><a href="#about">Giới thiệu</a></li>
                 <li><a href="#skills">Kỹ năng</a></li>
                 <li><a href="#projects">Dự án</a></li>
@@ -386,7 +417,7 @@
                 <div class="info-grid">
                     <div class="info-box">
                         <span>Trường</span>
-                        <p>FPT Polytechnich</p>
+                        <p>FPT Polytechnic</p>
                     </div>
                     <div class="info-box">
                         <span>Khóa</span>
@@ -452,7 +483,7 @@
                         <h3 style="margin-bottom: 0.5rem;">Dự án</h3>
                         <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Giao diện ứng dụng đặt đồ ăn với trải nghiệm người dùng tối ưu.</p>
                         <a href="https://github.com/phucthien3156" class="project-btn" target="_blank">
-                            <i class="fas fa-eye"></i> Demo Design
+                            <i class="fab fa-github"></i> Xem GitHub
                         </a>
                     </div>
                 </div>
@@ -464,7 +495,7 @@
             <div class="glass-card reveal">
                 <div class="contact-layout">
                     <div>
-                        <h2 class="section-header" style="margin-bottom: 1rem;">Liên hệ</h2>
+                        <h2 class="section-header" style="margin-bottom: 1rem;">Kết nối</h2>
                         <p style="color: var(--text-dim); margin-bottom: 2rem;">Tôi luôn sẵn lòng đón nhận những cơ hội mới và học hỏi từ những người đi trước.</p>
                         <div style="font-weight: 700; font-size: 0.95rem;">
                             <p style="margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color:var(--accent); width:25px;"></i> phucthien3156@gmail.com</p>
@@ -488,6 +519,31 @@
     </footer>
 
     <script>
+        // Hamburger Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+            // Change icon
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close menu when clicking a link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
         // Reveal elements on scroll
         function reveal() {
             const reveals = document.querySelectorAll(".reveal");
@@ -500,7 +556,7 @@
             });
         }
 
-        // Smooth scroll
+        // Smooth scroll adjustment for fixed header
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
