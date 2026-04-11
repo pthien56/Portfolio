@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="/uploads/Avatar.jpg" alt="Đinh Phúc Thiên">
+                <img src="https://scontent.fthd2-4.fna.fbcdn.net/v/t39.30808-6/471151023_609616148181422_5035293914934114770_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=1d70fc&_nc_eui2=AeEyPgnOIDfy7mfrbtQ0NR4ILKelGjQwkJosp6UaNDCQmvtqRXlNlsqMFfs3G34I_ejMaPPiah3dTfoPWhQgeqLb&_nc_ohc=BlxyvqDOG1oQ7kNvwEpvw3e&_nc_oc=Adro2eu-J2zOOdNcUKTovLc47zl6BAlDKr4xOYa4_s8LdZ8rN-E_BmMc_Uqv1-YsAkNr2RkTS9k-GdCEMvw_WwMc&_nc_zt=23&_nc_ht=scontent.fthd2-4.fna&_nc_gid=4BlztHa-1Y0rK3kfDLr_cA&_nc_ss=7a3a8&oh=00_Af3Ry8HSA6TMczPrNZP1i1tMWGRojCBHdll-C6tz4S2ogQ&oe=69DFD6D1" alt="Đinh Phúc Thiên">
             </div>
         </section>
 
@@ -108,24 +108,43 @@
             </div>
         </section>
 
-        <form id="contactForm">
-                        <input type="text" name="name" class="form-input" placeholder="Tên của bạn" required>
-                        <input type="email" name="email" class="form-input" placeholder="Email của bạn" required>
-                        <textarea name="message" class="form-input" style="min-height: 100px;" placeholder="Lời nhắn..." required></textarea>
-                        
-                        <button type="submit" class="btn-send contact-form__submit">GỬI NGAY</button>
-                        
-                        <p id="formNote" style="margin-top: 15px; font-size: 0.85rem; text-align: center; font-weight: 600;"></p>
-                    </form>
-    </div>
+        <section id="contact">
+            <h2 class="section-header reveal">Liên hệ</h2>
+            <form id="contactForm">
+                <input type="text" name="name" class="form-input" placeholder="Tên của bạn" required>
+                <input type="email" name="email" class="form-input" placeholder="Email của bạn" required>
+                <textarea name="message" class="form-input" style="min-height: 100px;" placeholder="Lời nhắn..." required></textarea>
+                
+                <button type="submit" class="btn-send contact-form__submit">GỬI NGAY</button>
+                
+                <p id="formNote" style="margin-top: 15px; font-size: 0.85rem; text-align: center; font-weight: 600;"></p>
+            </form>
+        </div>
+        <div id="toast" class="toast">
+            <span><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>Tin nhắn đã được gửi thành công!</span>
+            <button id="toastClose"><i class="fas fa-times"></i></button>
+        </div>
+    </section>
 
-    <footer style="padding: 3rem 0; border-top: 1px solid var(--border-color); text-align: center;">
-        <p style="color: var(--text-dim); font-size: 0.75rem; letter-spacing: 1px;">© 2024 ĐINH PHÚC THIÊN. DESIGNED FOR MOBILE & DESKTOP.</p>
+    <footer class="main-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#home" class="logo">Portfolio</a>
+                <p>Fullstack Developer Aspiring</p>
+            </div>
+            
+            <div class="footer-socials">
+                <a href="https://github.com/pthien56" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
+
+            <div class="footer-copyright">
+                <p>© 2024 ĐINH PHÚC THIÊN.</p>
+                <p>DESIGNED FOR MOBILE & DESKTOP.</p>
+            </div>
+        </div>
     </footer>
-<div id="toast" class="toast">
-        <span><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>Tin nhắn đã được gửi thành công!</span>
-        <button id="toastClose"><i class="fas fa-times"></i></button>
-    </div>
 
     <script src="script.js"></script>
 </body>
