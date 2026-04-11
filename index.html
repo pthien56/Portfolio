@@ -6,390 +6,11 @@
     <title>Portfolio | Đinh Phúc Thiên - Web Developer</title>
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #050505;
-            --card-bg: #111111;
-            --accent: #3b82f6; 
-            --accent-glow: rgba(59, 130, 246, 0.4);
-            --text: #ffffff;
-            --text-dim: #a1a1aa;
-            --border-color: #262626;
-            --radius: 16px;
-            --font-heading: 'Syne', sans-serif;
-            --font-body: 'Space Grotesk', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        body.menu-open {
-            overflow: hidden;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.25rem;
-        }
-
-        /* Fixed Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.8rem 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .nav-inner {
-            width: 100%;
-            max-width: 1100px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 1.25rem;
-        }
-
-        .logo {
-            font-family: var(--font-heading);
-            font-weight: 800;
-            font-size: 1.2rem;
-            background: linear-gradient(135deg, var(--accent), #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-            letter-spacing: -1px;
-            z-index: 1001;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dim);
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        /* Hamburger Menu Button */
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 1001;
-            padding: 5px;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 120px 0 60px;
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 3rem;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .hero-text h1 {
-            font-family: var(--font-heading);
-            font-size: clamp(2.5rem, 10vw, 5.5rem);
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-            background: linear-gradient(135deg, var(--accent), #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 4vw, 1.25rem);
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            max-width: 550px;
-        }
-
-        .hero-image {
-            width: 100%;
-            aspect-ratio: 1/1.1;
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(0.2);
-            transition: 0.5s;
-        }
-
-        /* Bento Cards */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .info-box {
-            background: var(--card-bg);
-            padding: 1.2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .info-box span {
-            display: block;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            color: var(--accent);
-            font-weight: 800;
-            margin-bottom: 0.3rem;
-        }
-
-        .info-box p {
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        /* Sections */
-        section { padding: 4rem 0; }
-
-        .section-header {
-            font-family: var(--font-heading);
-            font-size: clamp(2rem, 8vw, 3rem);
-            margin-bottom: 2rem;
-            letter-spacing: -1px;
-        }
-
-        .glass-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius);
-            padding: clamp(1.5rem, 5vw, 2.5rem);
-            transition: 0.4s;
-        }
-
-        /* Skills */
-        .skills-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            background: #111;
-            border: 1px solid var(--border-color);
-            padding: 0.8rem;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        /* Projects */
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-thumb {
-            width: 100%;
-            height: 200px;
-            background: #222;
-        }
-
-        .project-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .project-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent);
-            color: white;
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            margin-top: auto;
-        }
-
-        /* Contact */
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
-
-        .form-input {
-            width: 100%;
-            background: #000;
-            border: 1px solid var(--border-color);
-            padding: 1rem;
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 0.8rem;
-            font-family: inherit;
-        }
-
-        .btn-send {
-            width: 100%;
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 1rem;
-            border-radius: 10px;
-            font-family: var(--font-heading);
-            font-weight: 700;
-            cursor: pointer;
-        }
-
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.6s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* MOBILE OPTIMIZATION */
-        @media (max-width: 900px) {
-            .menu-toggle {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background: rgba(5, 5, 5, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2.5rem;
-                transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-                z-index: 1000;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links a {
-                font-size: 1.5rem;
-                font-family: var(--font-heading);
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                padding-top: 100px;
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .hero-text {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-image {
-                order: -1;
-                max-width: 320px;
-                margin: 0 auto;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-                width: 100%;
-                max-width: 400px;
-            }
-
-            .contact-layout {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-header {
-                text-align: center;
-            }
-            
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
+    <nav id="navbar">
         <div class="nav-inner">
             <a href="#home" class="logo">Portfolio</a>
             
@@ -398,21 +19,20 @@
             </button>
 
             <ul class="nav-links" id="nav-menu">
-                <li><a href="#about">Giới thiệu</a></li>
-                <li><a href="#skills">Kỹ năng</a></li>
-                <li><a href="#projects">Dự án</a></li>
-                <li><a href="#contact">Liên hệ</a></li>
+                <li><a href="#about" class="nav-item">Giới thiệu</a></li>
+                <li><a href="#skills" class="nav-item">Kỹ năng</a></li>
+                <li><a href="#projects" class="nav-item">Dự án</a></li>
+                <li><a href="#contact" class="nav-item">Liên hệ</a></li>
             </ul>
         </div>
     </nav>
 
     <div class="container">
-        <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="hero-text">
                 <p style="color:var(--accent); font-weight: 800; margin-bottom: 0.5rem; letter-spacing: 2px; font-size: 0.8rem;">WEB DEVELOPER</p>
                 <h1>ĐINH<br>PHÚC THIÊN</h1>
-                <p class="hero-subtitle">Sinh viên Công nghệ thông tin chuyên tâm xây dựng các sản phẩm web hiện đại, mượt mà và tối ưu.</p>
+                <p class="hero-subtitle"><span id="typing-text"></span><span class="cursor">|</span></p>
                 
                 <div class="info-grid">
                     <div class="info-box">
@@ -430,150 +50,83 @@
                 </div>
             </div>
             <div class="hero-image">
-                <img src="uploads/1.png" alt="Đinh Phúc Thiên">
+                <img src="/uploads/Avatar.jpg" alt="Đinh Phúc Thiên">
             </div>
         </section>
 
-        <!-- Giới thiệu -->
         <section id="about">
             <h2 class="section-header reveal">Giới thiệu</h2>
             <div class="glass-card reveal">
                 <p style="font-size: 1.1rem; color: var(--text-dim);">
-                    Tôi hiện đang là sinh viên tại <b>Cao đẳng FPT Polytechnic</b>. Với định hướng trở thành một Fullstack Developer, tôi không ngừng trau dồi kỹ năng về <b>PHP, Laravel và Javascript</b>. Quan điểm của tôi là code không chỉ để chạy, mà phải đẹp và dễ bảo trì.
+                    Tôi hiện đang là sinh viên tại <b>Cao đẳng FPT Polytechnic</b>. Với định hướng trở thành một Fullstack Developer, tôi không ngừng trau dồi kỹ năng về <b>PHP, Laravel và Javascript</b>. Quan điểm của tôi là code không chỉ để chạy, mà phải đẹp, tối ưu UX/UI và dễ bảo trì.
                 </p>
             </div>
         </section>
 
-        <!-- Kỹ năng -->
         <section id="skills">
             <h2 class="section-header reveal">Kỹ năng</h2>
             <div class="skills-container reveal">
                 <div class="skill-tag">HTML5 / CSS3</div>
                 <div class="skill-tag">Javascript</div>
-                <div class="skill-tag">PHP</div>
+                <div class="skill-tag">VueJS / Nuxt</div>
+                <div class="skill-tag">PHP / Laravel</div>
                 <div class="skill-tag">MySQL</div>
                 <div class="skill-tag">Figma UI/UX</div>
                 <div class="skill-tag">Git / GitHub</div>
             </div>
         </section>
 
-        <!-- Dự án -->
         <section id="projects">
             <h2 class="section-header reveal">Dự án</h2>
             <div class="project-grid">
-                <!-- Dự án 1 -->
-                <!-- <div class="project-card reveal">
+                <div class="project-card reveal">
                     <div class="project-thumb">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800" alt="E-Commerce">
                     </div>
                     <div class="project-content">
-                        <h3 style="margin-bottom: 0.5rem;">Dự án</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Website bán hàng tích hợp quản lý kho và thanh toán trực tuyến.</p>
-                        <a href="https://github.com/phucthien3156" class="project-btn" target="_blank">
-                            <i class="fab fa-github"></i> Xem GitHub
+                        <h3 style="margin-bottom: 0.5rem;">Web Quán Đồ Uống Online</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Website bán hàng tích hợp quản lý kho, áp dụng mô hình Agile/Scrum.</p>
+                        <a href="#" class="project-btn" target="_blank">
+                            <i class="fab fa-github"></i> 
+                            DEMO
+                            <!-- Xem GitHub -->
                         </a>
                     </div>
-                </div> -->
-                <!-- Dự án 2 -->
-                <div class="project-card reveal">
+                </div>
+                <div class="project-card reveal" style="transition-delay: 0.1s;">
                     <div class="project-thumb">
                         <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=800" alt="UI Design">
                     </div>
                     <div class="project-content">
-                        <h3 style="margin-bottom: 0.5rem;">Dự án</h3>
-                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Giao diện ứng dụng với trải nghiệm người dùng tối ưu.</p>
-                        <a href="https://github.com/trongdat06/DuAn1.git" class="project-btn" target="_blank">
-                            <i class="fab fa-github"></i> Xem GitHub
+                        <h3 style="margin-bottom: 0.5rem;">CODE_WEAR Landing Page</h3>
+                        <p style="color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1.5rem;">Giao diện theo concept Futuristic, tối ưu animations và reponsive.</p>
+                        <a href="https://pthien56.github.io/Landing-Page/" class="project-btn" target="_blank">
+                            <i class="fab fa-github"></i> Xem Link Web
                         </a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Liên hệ -->
-        <section id="contact">
-            <div class="glass-card reveal">
-                <div class="contact-layout">
-                    <div>
-                        <h2 class="section-header" style="margin-bottom: 1rem;">Kết nối</h2>
-                        <p style="color: var(--text-dim); margin-bottom: 2rem;">Tôi luôn sẵn lòng đón nhận những cơ hội mới và học hỏi từ những người đi trước.</p>
-                        <div style="font-weight: 700; font-size: 0.95rem;">
-                            <p style="margin-bottom: 0.5rem;"><i class="fas fa-envelope" style="color:var(--accent); width:25px;"></i> phucthien3156@gmail.com</p>
-                            <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone" style="color:var(--accent); width:25px;"></i> +84 947 165 235</p>
-                            <p><i class="fab fa-github" style="color:var(--accent); width:25px;"></i> github.com/phucthien3156</p>
-                        </div>
-                    </div>
-                    <form onsubmit="event.preventDefault(); alert('Cảm ơn! Tôi sẽ liên hệ lại sớm.');">
-                        <input type="text" class="form-input" placeholder="Tên của bạn" required>
-                        <input type="email" class="form-input" placeholder="Email của bạn" required>
-                        <textarea class="form-input" style="min-height: 100px;" placeholder="Lời nhắn..."></textarea>
-                        <button type="submit" class="btn-send">GỬI NGAY</button>
+        <form id="contactForm">
+                        <input type="text" name="name" class="form-input" placeholder="Tên của bạn" required>
+                        <input type="email" name="email" class="form-input" placeholder="Email của bạn" required>
+                        <textarea name="message" class="form-input" style="min-height: 100px;" placeholder="Lời nhắn..." required></textarea>
+                        
+                        <button type="submit" class="btn-send contact-form__submit">GỬI NGAY</button>
+                        
+                        <p id="formNote" style="margin-top: 15px; font-size: 0.85rem; text-align: center; font-weight: 600;"></p>
                     </form>
-                </div>
-            </div>
-        </section>
     </div>
 
     <footer style="padding: 3rem 0; border-top: 1px solid var(--border-color); text-align: center;">
         <p style="color: var(--text-dim); font-size: 0.75rem; letter-spacing: 1px;">© 2024 ĐINH PHÚC THIÊN. DESIGNED FOR MOBILE & DESKTOP.</p>
     </footer>
+<div id="toast" class="toast">
+        <span><i class="fas fa-check-circle" style="color: #10b981; margin-right: 8px;"></i>Tin nhắn đã được gửi thành công!</span>
+        <button id="toastClose"><i class="fas fa-times"></i></button>
+    </div>
 
-    <script>
-        // Hamburger Menu Logic
-        const menuBtn = document.getElementById('menu-btn');
-        const navMenu = document.getElementById('nav-menu');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        menuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-            // Change icon
-            const icon = menuBtn.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
-        });
-
-        // Close menu when clicking a link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                document.body.classList.remove('menu-open');
-                const icon = menuBtn.querySelector('i');
-                icon.classList.add('fa-bars');
-                icon.classList.remove('fa-times');
-            });
-        });
-
-        // Reveal elements on scroll
-        function reveal() {
-            const reveals = document.querySelectorAll(".reveal");
-            reveals.forEach(el => {
-                let windowHeight = window.innerHeight;
-                let elementTop = el.getBoundingClientRect().top;
-                if (elementTop < windowHeight - 50) {
-                    el.classList.add("active");
-                }
-            });
-        }
-
-        // Smooth scroll adjustment for fixed header
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
-
